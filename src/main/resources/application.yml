@@ -1,0 +1,52 @@
+custom:
+  initializr:
+    javaVersions:
+      - id: 11
+        default: false
+      - id: 1.8
+        default: true
+    packagings:
+      - name: Jar
+        id: jar
+        default: true
+    languages:
+      - name: Java
+        id: java
+        default: true
+    types:
+      - name: Maven Project
+        id: maven-project
+        description: Generate a Maven based project archive
+        tags:
+          build: maven
+          format: project
+        default: false
+        action: /starter.zip
+      - name: Gradle Project
+        id: gradle-project
+        description: Generate a Gradle based project archive
+        tags:
+          build: gradle
+          format: project
+        default: true
+        action: /starter.zip
+    group-id:
+      value: com.jpmorgan.gti.sf
+      title: GroupId
+      description: Generating default group id
+    artifact-id:
+      value: osb
+    name:
+      value: starter
+    dependencies:
+      - name: Web
+        content:
+          - name: naming-service
+            id: naming-service
+            description: Naming Service
+            groupId: com.jpmorgan
+            artifactId: naming-service
+            version: 1.0.0
+          - name: Web
+            id: web
+            description: Spring Embedded Tomcat
