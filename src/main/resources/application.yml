@@ -50,3 +50,8 @@ custom:
           - name: Web
             id: web
             description: Spring Embedded Tomcat
+      - name: OPS
+        content:
+          - name: Actuator
+            id: actuator
+            description: Supports built in (or custom) endpoints that let you monitor and manage your application - such as application health, metrics, sessions, etc.
