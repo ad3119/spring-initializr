@@ -28,6 +28,7 @@ dependencies {
 	implementation("io.spring.initializr:initializr-web")
 	implementation("io.spring.initializr:initializr-generator-spring")
 	implementation("org.springdoc:springdoc-openapi-ui:1.5.9")
+	implementation("com.squareup:javapoet:1.13.0")
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
