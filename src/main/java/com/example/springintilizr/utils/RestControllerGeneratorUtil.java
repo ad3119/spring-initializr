@@ -21,11 +21,11 @@ public class RestControllerGeneratorUtil {
         AnnotationSpec.builder(RequestMapping.class).addMember("value", "\"api/v1\"").build();
     MethodSpec methodSpec =
         MethodSpec.methodBuilder("test")
-            .addParameter(String.class, "message")
+            .addParameter(String.class, "name")
             .returns(String.class)
             .addAnnotation(getMappingAnnotationSpec)
             .addModifiers(Modifier.PUBLIC)
-            .addStatement("return \"Hello \" + message")
+            .addStatement("return \"Hello \" + name")
             .build();
     TypeSpec testController =
         TypeSpec.classBuilder("TestController")
@@ -36,7 +36,7 @@ public class RestControllerGeneratorUtil {
             .build();
 
     return JavaFile.builder("com.jpmorgan.gti.sf.osb.controller", testController)
-        .indent("    ")
+        .indent("   ")
         .build();
   }
 }
