@@ -5,7 +5,6 @@ import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 import io.spring.initializr.generator.project.contributor.ProjectContributor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,17 +27,13 @@ public class SampleContributor implements ProjectContributor {
     log.info("Inside Directory Creation");
     final String[] directories =
         new String[] {"controller", "services", "model", "repository", "config"};
-
-    File file = new File(projectRoot.resolve("src/main/java/com/jpmorgan/gti/sf/osb").toUri());
-    file.mkdirs();
-
+    final Path srcPath = projectRoot.resolve("src/main/java");
+    final Path folderPath =
+        Files.createDirectories(projectRoot.resolve(srcPath + "/com/jpmorgan/gti/sf/osb"));
     for (final String directory : directories) {
-      Path directoryPath =
-          Files.createDirectory(projectRoot.resolve(file.getAbsolutePath() + "/" + directory));
-
+      Files.createDirectory(projectRoot.resolve(folderPath + "/" + directory));
       if (directory.equals("controller")) {
-        RestControllerGeneratorUtil.generateRestController()
-            .writeTo(projectRoot.resolve("src/main/java"));
+        RestControllerGeneratorUtil.generateRestController().writeTo(srcPath);
       }
     }
   }
