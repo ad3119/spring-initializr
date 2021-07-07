@@ -1,0 +1,7 @@
+FROM fabric8/java-alpine-openjdk8-jre
+VOLUME /tmp
+ADD {{artifactPath}}/{{artifactId}}-{{version}}.jar app.jar
+RUN sh -c 'touch /app.jar'
+ENV SPRING_PROFILES_ACTIVE "docker"
+EXPOSE 8080
+ENTRYPOINT [ "sh", "-c", "java -Dspring.profiles.active=$SPRING_PROFILES_ACTIVE -jar /app.jar" ]
